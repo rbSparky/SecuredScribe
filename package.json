@@ -23,7 +23,9 @@
     "react-native-gesture-handler": "~2.5.0",
     "react-native-collapsible": "*",
     "expo-blur": "~11.2.0",
-    "@react-navigation/stack": "*"
+    "@react-navigation/stack": "*",
+    "react-native-svg": "12.3.0",
+    "@fortawesome/free-solid-svg-icons": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
