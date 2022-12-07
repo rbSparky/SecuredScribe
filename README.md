@@ -4,6 +4,7 @@ A note taking app written in React Native to take secure password protected note
 
 ### Updates
 - Added star functionality: Starred notes will remain at the top
+- UI/Colour scheme improvements
 
 
 ### Screenshots
