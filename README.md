@@ -10,7 +10,7 @@ A note taking app written in React Native to take secure password protected note
 ### Screenshots
 
 <p float="left">
-<img src="https://github.com/rbSparky/SecuredScribe/blob/main/screenshots/ss3.jpeg" alt="4" width="200"/>
+<img src="https://github.com/rbSparky/SecuredScribe/blob/main/screenshots/ss4.jpeg" alt="4" width="200"/>
 <img src="https://github.com/rbSparky/SecuredScribe/blob/main/screenshots/ss1.jpeg" alt="1" width="200"/>
 <img src="https://github.com/rbSparky/SecuredScribe/blob/main/screenshots/ss2.jpeg" alt="2" width="200"/>
 <img src="https://github.com/rbSparky/SecuredScribe/blob/main/screenshots/ss3.jpeg" alt="3" width="200"/>
