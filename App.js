@@ -7,24 +7,13 @@ import {
   Button,
   Image,
   Platform,
+  FlatList,
+  TouchableOpacity,
+  Collapsible,
 } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { FlatList } from 'react-native';
-import { TouchableOpacity } from 'react-native';
+import { FontAwesome, Octicons } from '@expo/vector-icons';
 import { BlurView } from 'expo';
-import { Octicons } from '@expo/vector-icons';
-//import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-//import { faMoon } from '@fortawesome/free-solid-svg-icons';
-
-import Collapsible from 'react-native-collapsible';
-
-/*
-import { NavigationContainer } from 'react-navigation';
-import { createNavigatorFactory } from 'react-navigation';
-*/
-
 import Dashboard from './components/Dashboard';
-import LastInput from './components/LastInput';
 
 export default class App extends React.Component {
   state = {
@@ -34,11 +23,10 @@ export default class App extends React.Component {
     nightMode: false,
     isCollapsed: true,
     setIsCollapsed: true,
-    setPasswordClicked: false, // added state variable to track whether "Set Password" has been clicked
+    setPasswordClicked: false,
   };
 
   handleChange = (event) => {
-    //this.setState({ note: event.target.value });
     this.setState({ note: event.nativeEvent.text });
   };
 
@@ -55,7 +43,6 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    // Enable user input in the TextInput component
     this.input.setNativeProps({ editable: true });
   }
 
@@ -119,6 +106,21 @@ export default class App extends React.Component {
       setPasswordClicked: val,
     });
   };
+
+  handleStar = (index) => {
+  this.setState((prevState) => {
+    // Create a new array with the starred item at the beginning
+    const starredNotes = [
+      prevState.notes[index],
+      ...prevState.notes.slice(0, index),
+      ...prevState.notes.slice(index + 1),
+    ];
+
+    // Update the value of the data prop to use the new array
+    return { notes: starredNotes };
+  });
+}
+
 
   deleteNote = (index) => {
     this.setState((prevState) => {
@@ -193,6 +195,7 @@ export default class App extends React.Component {
               {editingNote === null ? 'Add Note' : 'Update Note'}
             </Text>
           </TouchableOpacity>
+
           <FlatList
             data={filteredNotes}
             numColumns={2}
@@ -206,20 +209,38 @@ export default class App extends React.Component {
                     {line}
                   </Text>
                 ))}
+
                 <Text>&nbsp;</Text>
 
                 <View style={{ flexDirection: 'row' }}>
+                  {/* Add a star icon with an onPress handler */}
+                  <TouchableOpacity onPress={() => this.handleStar(index)}>
+                    <FontAwesome
+                      name="star"
+                      size={24}
+                      color={nightMode ? '#7f7f7f' : '#282828'}
+                    />
+                  </TouchableOpacity><Text>&nbsp;</Text><Text>&nbsp;</Text><Text>&nbsp;</Text>                  
                   <TouchableOpacity onPress={() => this.handleEdit(index)}>
-                    <FontAwesome name="pencil" size={24} color="black" />
+                    <FontAwesome
+                      name="pencil"
+                      size={24}
+                      color={nightMode ? '#7f7f7f' : '#282828'}
+                    />
                   </TouchableOpacity>
                   <View style={{ width: 10 }} />
                   <TouchableOpacity onPress={() => this.deleteNote(index)}>
-                    <FontAwesome name="trash" size={24} color="black" />
+                    <FontAwesome
+                      name="trash"
+                      size={24}
+                      color={nightMode ? '#7f7f7f' : '#282828'}
+                    />
                   </TouchableOpacity>
                 </View>
               </View>
             )}
           />
+
           <TouchableOpacity onPress={this.toggleNightMode}>
             {nightMode ? (
               <Octicons name="sun" size={24} color="white" />
@@ -380,3 +401,4 @@ else {
       );
     }
     */
+
